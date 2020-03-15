@@ -11,6 +11,14 @@ module.exports = {
     contentBase: "./dist",
     hot: true
   },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"]
+      }
+    ]
+  },
   plugins: [
     // 对于 CleanWebpackPlugin 的 v2 versions 以下版本，使用 new CleanWebpackPlugin(['dist/*'])
     new CleanWebpackPlugin(),
