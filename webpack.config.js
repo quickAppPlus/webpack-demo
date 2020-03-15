@@ -3,24 +3,23 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
-  mode: "development",
   entry: {
-    app: "./src/index.js",
-    print: "./src/print.js"
+    app: "./src/index.js"
   },
   devtool: "inline-source-map",
   devServer: {
-    contentBase: "./dist"
+    contentBase: "./dist",
+    hot: true
   },
   plugins: [
+    // 对于 CleanWebpackPlugin 的 v2 versions 以下版本，使用 new CleanWebpackPlugin(['dist/*'])
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: "管理输出"
+      title: "模块热替换"
     })
   ],
   output: {
     filename: "[name].bundle.js",
-    path: path.resolve(__dirname, "dist"),
-    publicPath: "/"
+    path: path.resolve(__dirname, "dist")
   }
 };
