@@ -4,6 +4,10 @@
   "description": "",
   "private": true,
   "main": "index.js",
+  "sideEffects": [
+    "./src/some-side-effectful-file.js",
+    "*.css"
+  ],
   "scripts": {
     "watch": "webpack --watch",
     "start": "webpack-dev-server --open",
