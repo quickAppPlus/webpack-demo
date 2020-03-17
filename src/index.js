@@ -1,14 +1,14 @@
-import _ from "lodash";
+async function getComponent() {
+  const element = document.createElement("div");
+  const { default: _ } = await import(
+    /* webpackChunkName: "lodash" */ "lodash"
+  );
 
-console.log(_.join(["a", "b", "c!"], " "));
-
-if (process.env.NODE_ENV !== "production") {
-  console.log("Looks like we are in development mode!");
-}
-function component() {
-  const element = document.createElement("pre");
+  element.innerHTML = _.join(["Hello", "webpack"], " ");
 
   return element;
 }
 
-document.body.appendChild(component());
+getComponent().then(component => {
+  document.body.appendChild(component);
+});
